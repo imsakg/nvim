@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -47,14 +47,24 @@ return {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs with `H` and `L`
-        -- L = {
-        --   function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
-        --   desc = "Next buffer",
-        -- },
-        -- H = {
-        --   function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
-        --   desc = "Previous buffer",
-        -- },
+        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+
+        -- Open telescope buffers
+        ["<Tab>"] = {
+          function()
+            if #vim.t.bufs > 1 then
+              require("telescope.builtin").buffers { sort_mru = true, ignore_current_buffer = true }
+            else
+              -- notify
+            end
+          end,
+          desc = "Buffers",
+        },
+
+        ["<Leader>bz"] = { function() require "keys.nvim" end, desc = "Toggle Keys" },
+
+        ["yc"] = { function() require("utils.fs").rel_path() end, desc = "Copy current file relative path" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {
