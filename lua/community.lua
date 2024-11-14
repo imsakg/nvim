@@ -44,7 +44,7 @@ return {
     },
   },
   -- Packs
-  { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.astro" },
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.cmake" },
@@ -62,7 +62,10 @@ return {
   { import = "astrocommunity.pack.proto" },
   -- { import = "astrocommunity.pack.ps1" },
   { import = "astrocommunity.pack.python-ruff" },
+  { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.sql" },
   { import = "astrocommunity.pack.svelte" },
+  { import = "astrocommunity.pack.swift" },
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.typescript" },
@@ -83,10 +86,11 @@ return {
     colorcolumn = 120,
   } },
 
-  { import = "astrocommunity.project.nvim-spectre" },
+  { import = "astrocommunity.search.nvim-spectre" },
 
   { import = "astrocommunity.code-runner.overseer-nvim" },
   { import = "astrocommunity.code-runner.compiler-nvim" },
+  { import = "astrocommunity.code-runner.executor-nvim" },
 
   { import = "astrocommunity.editing-support.suda-vim" },
 
@@ -96,10 +100,15 @@ return {
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.editing-support.vim-move" },
 
+  -- { import = "astrocommunity.workflow.precognition-nvim" },
   -- Personal Extensions
   "frazrepo/vim-rainbow",
   "PotatoesMaster/i3-vim-syntax",
   "WhoIsSethDaniel/mason-tool-installer.nvim",
   "wakatime/vim-wakatime",
-  "tamton-aquib/keys.nvim",
+  {
+    "NStefan002/screenkey.nvim",
+    lazy = false,
+    version = "*", -- or branch = "dev", to use the latest commit
+  },
 }
