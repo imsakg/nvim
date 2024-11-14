@@ -45,7 +45,6 @@ return {
       -- first key is the mode
       n = {
         -- second key is the lefthand side of the map
-
         -- navigate buffer tabs with `H` and `L`
         L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
@@ -62,9 +61,15 @@ return {
           desc = "Buffers",
         },
 
-        ["<Leader>bz"] = { function() require "keys.nvim" end, desc = "Toggle Keys" },
+        ["<Leader>Ee"] = { "<cmd>ExecutorRun<cr>", desc = "Executor Exec!" },
+        ["<Leader>Et"] = { "<cmd>ExecutorToggleDetail<cr>", desc = "Executor Toggle Detail!" },
+        ["<Leader>Eh"] = { "<cmd>ExecutorHistory<cr>", desc = "Executor Exec!" },
+        ["<Leader>Es"] = { "<cmd>ExecutorRun<cr>", desc = "Executor Exec!" },
 
-        ["yc"] = { function() require("utils.fs").rel_path() end, desc = "Copy current file relative path" },
+        ["<Leader>bz"] = { "<cmd>Screenkey toggle<cr>", desc = "Toggle Keys" },
+
+        ["<Leader>fyc"] = { function() require("utils.fs").rel_path() end, desc = "Copy current file relative path" },
+        ["<Leader>fya"] = { function() require("utils.fs").abs_path() end, desc = "Copy current file absolute path" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {
@@ -75,6 +80,11 @@ return {
           end,
           desc = "Pick to close",
         },
+
+        ["tt"] = {
+          function() require("toggleterm").toggle() end,
+          desc = "Toggle Term",
+        },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         ["<Leader>b"] = { desc = "Buffers" },
@@ -83,7 +93,11 @@ return {
       },
       t = {
         -- setting a mapping to false will disable it
-        -- ["<esc>"] = false,
+        ["<esc>"] = false,
+        ["tt"] = {
+          function() require("toggleterm").toggle() end,
+          desc = "Toggle Term",
+        },
       },
     },
   },
